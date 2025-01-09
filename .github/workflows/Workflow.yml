@@ -1,0 +1,29 @@
+name: Workflow
+
+on:
+  push:
+    branches:
+      - main
+  repository_dispatch:
+    types:
+      - repository_created
+
+jobs:
+  run-checks:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Run some checks (e.g., linting or testing)
+    - name: Run Code Linter
+      run: echo "Running code linting checks..."
+
+    - name: Run Tests
+      run: echo "Running tests..."
+
+    # Step 3: Notify of Success
+    - name: Notify
+      run: echo "Workflow completed successfully!"
