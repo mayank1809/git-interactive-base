@@ -20,7 +20,9 @@ jobs:
     # Step 2: Run some checks (e.g., linting or testing)
     - name: Run Code Linter
       run: echo "Running code linting checks..."
-
+    - name: install dependencies
+      run:
+        python -m pip install --upgrade pip
     - name: Run Tests
       run: echo "Running tests..."
 
