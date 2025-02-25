@@ -1,33 +1,13 @@
-name: Workflow
-
-on:
-  push:
-    branches:
-      - main
-  repository_dispatch:
-    types:
-      - repository_created
+name: TestWorkflow
+on: [push]
 
 jobs:
-  run-checks:
-    runs-on: windows
-
+  build:
+    runs-on: ubuntu-latest
     steps:
-    # Step 1: Checkout the repository
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Run workflow generator
+        uses: mayank1809/workflow@main
 
-    # Step 2: Run some checks (e.g., linting or testing)
-    - name: Run Code Linter
-      run: echo "Running code linting checks..."
-    - name: install dependencies
-      run:
-        python -m pip install --upgrade pip
-    - name: Run Tests
-      run: echo "Running tests..."
-
-    # Step 3: Notify of Success
-    - name: Notify
-      run: echo "Workflow completed successfully!"
-    
-  
+        
